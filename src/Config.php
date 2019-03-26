@@ -11,6 +11,8 @@ namespace Vipps;
  * @property string $merchantSerialNumber
  * @property string $accessTokenSubscriptionKey
  * @property string $ecommerceSubscriptionKey
+ * @property string $callbackPrefix
+ * @property string $fallBack
  */
 class Config extends Model
 {
@@ -21,7 +23,9 @@ class Config extends Model
     'clientSecret',
     'merchantSerialNumber',
     'accessTokenSubscriptionKey',
-    'ecommerceSubscriptionKey'
+    'ecommerceSubscriptionKey',
+    'callbackPrefix',
+    'fallBack'
   ];
 
   /**
