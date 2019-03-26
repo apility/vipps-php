@@ -28,7 +28,7 @@ class PaymentStatus extends Model
    * @param array $paymentStatus = []
    * @param bool $immuteable = true
    */
-  private function __construct(array $paymentStatus = [], $immuteable = true)
+  public function __construct(array $paymentStatus = [], $immuteable = true)
   {
     parent::__construct([], false);
 
