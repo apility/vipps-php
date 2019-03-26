@@ -1,7 +1,7 @@
 # Vipps eCommerce PHP
 
-[![License: MIT](https://img.shields.io/packagist/l/apility/vipps.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/packagist/v/apility/php.svg)](https://github.com/apility/vipps-php/releases/latest)
+[![License: MIT](https://img.shields.io/packagist/l/apility/vipps.svg?color=red)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/github/tag/apility/vipps-php.svg?label=version)](https://github.com/apility/vipps-php/releases/latest)
 
 ## Basic usage
 
