@@ -15,6 +15,8 @@ abstract class Model implements ArrayAccess, JsonSerializable {
   use \Vipps\Traits\ArrayLike;
   use \Vipps\Traits\Debuggable;
 
+  protected $_immuteable = false;
+
   /** @var array */
   protected $fields = [];
 

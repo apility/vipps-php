@@ -26,10 +26,7 @@ trait Setters
         return $this->attributes[$key] = $value;
     };
 
-    $usingImmuteableTrait = in_array(
-      Immuteable::class,
-      array_keys((new ReflectionClass(static::class))->getTraits())
-    );
+    $usingImmuteableTrait = method_exists($this, 'mutate') && method_exists($this, 'immuteable');
 
     if ($usingImmuteableTrait) {
       return $this->mutate($callback);
