@@ -1,0 +1,7 @@
+.cache
+vendor
+.DS_Store
+.env
+sami.phar
+sami.php
+tests
