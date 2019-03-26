@@ -52,7 +52,7 @@ class Vipps
   public static function getUniqueID(): string
   {
     $cstrong = true;
-    return bin2hex(openssl_random_pseudo_bytes(15, $cstrong));
+    return bin2hex(openssl_random_pseudo_bytes(8, $cstrong));
   }
 
   /**
