@@ -16,7 +16,7 @@ class TransactionInfo extends Model
   use \Vipps\Traits\AmountMutator;
 
   /** @var array */
-  protected $fields = ['amount', 'status', 'timeStamp'];
+  protected $fields = ['transactionId', 'amount', 'status', 'timeStamp'];
 
   /** @var array */
   protected $rawValues = ['amount'];
