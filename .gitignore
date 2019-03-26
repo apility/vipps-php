@@ -4,4 +4,3 @@ vendor
 .env
 sami.phar
 sami.php
-tests
