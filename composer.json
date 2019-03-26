@@ -22,8 +22,10 @@
       "php": "7.1"
     }
   },
+  "require": {
+    "guzzlehttp/guzzle": "^6.3"
+  },
   "require-dev": {
-    "guzzlehttp/guzzle": "^6.3",
     "phpunit/phpunit": "^6.5",
     "vlucas/phpdotenv": "^3.3"
   }
