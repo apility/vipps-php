@@ -35,13 +35,13 @@ class MerchantInfo extends Model
     parent::__construct([], false);
 
     if (!$this->merchantSerialNumber)
-      $this->merchantSerialNumber = Vipps::getConfig()->merchantSerialNumber;
+      $this->merchantSerialNumber = $merchantInfo['merchantSerialNumber'] ?? Vipps::getConfig()->merchantSerialNumber ?? null;
 
     if (!$this->callbackPrefix)
-      $this->callbackPrefix = Vipps::getConfig()->callbackPrefix;
+      $this->callbackPrefix = $merchantInfo['callbackPrefix'] ?? Vipps::getConfig()->callbackPrefix ?? null;
 
     if (!$this->fallBack)
-      $this->fallBack = Vipps::getConfig()->fallback;
+      $this->fallBack = $merchantInfo['fallBack'] ?? Vipps::getConfig()->fallBack ?? null;
 
     $this->immuteable($immuteable);
   }
