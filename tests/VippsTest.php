@@ -50,13 +50,4 @@ final class VippsTest extends TestCase
       $uniqueIds
     );
   }
-
-  public function testCanCreateClient (): void {
-    $client = Vipps::getClient();
-
-    $this->assertInstanceOf(
-      Client::class,
-      $client
-    );
-  }
 }

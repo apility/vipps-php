@@ -19,44 +19,56 @@ final class ConfigTest extends TestCase
 
     $this->assertEquals(
       null,
-      $config->getClientId()
+      $config->clientId
     );
 
     $this->assertEquals(
       null,
-      $config->getClientSecret()
+      $config->clientSecret
     );
 
     $this->assertEquals(
       'https://api.vipps.no',
-      $config->getEndpoint()
+      $config->endpoint
     );
 
     $this->assertEquals(
       null,
-      $config->getMerchantSerialNumber()
+      $config->merchantSerialNumber
     );
 
     $this->assertEquals(
       null,
-      $config->getAccessTokenSubscriptionKey()
+      $config->accessTokenSubscriptionKey
     );
 
     $this->assertEquals(
       null,
-      $config->getEcommerceSubscriptionKey()
+      $config->ecommerceSubscriptionKey
+    );
+
+    $this->assertEquals(
+      null,
+      $config->callbackPrefix
+    );
+
+    $this->assertEquals(
+      null,
+      $config->fallBack
     );
   }
 
   public function testBuilderPattern(): void
   {
     $config = Config::create()
-      ->setClientId('client_id')
-      ->setClientSecret('client_secret')
-      ->setEndpoint('http://test.domain.tld')
-      ->setMerchantSerialNumber('merchant_serial_number')
-      ->setAccessTokenSubscriptionKey('access_token_subscription_key')
-      ->setEcommerceSubscriptionKey('ecommerce_subscription_key');
+      ->set('clientId', 'client_id')
+      ->set('clientSecret', 'client_secret')
+      ->set('endpoint', 'http://test.domain.tld')
+      ->set('merchantSerialNumber', 'merchant_serial_number')
+      ->set('accessTokenSubscriptionKey', 'access_token_subscription_key')
+      ->set('ecommerceSubscriptionKey', 'ecommerce_subscription_key')
+      ->set('callbackPrefix', 'callback_prefix')
+      ->set('fallBack', 'fallback');
 
     $this->assertInstanceOf(
       Config::class,
@@ -65,32 +77,42 @@ final class ConfigTest extends TestCase
 
     $this->assertEquals(
       'client_id',
-      $config->getClientId()
+      $config->clientId
     );
 
     $this->assertEquals(
       'client_secret',
-      $config->getClientSecret()
+      $config->clientSecret
     );
 
     $this->assertEquals(
       'http://test.domain.tld',
-      $config->getEndpoint()
+      $config->endpoint
     );
 
     $this->assertEquals(
       'merchant_serial_number',
-      $config->getMerchantSerialNumber()
+      $config->merchantSerialNumber
     );
 
     $this->assertEquals(
       'access_token_subscription_key',
-      $config->getAccessTokenSubscriptionKey()
+      $config->accessTokenSubscriptionKey
     );
 
     $this->assertEquals(
       'ecommerce_subscription_key',
-      $config->getEcommerceSubscriptionKey()
+      $config->ecommerceSubscriptionKey
+    );
+
+    $this->assertEquals(
+      'callback_prefix',
+      $config->callbackPrefix
+    );
+
+    $this->assertEquals(
+      'fallback',
+      $config->fallBack
     );
   }
 
@@ -115,6 +137,8 @@ final class ConfigTest extends TestCase
       'merchantSerialNumber' => 'merchant_serial_number',
       'accessTokenSubscriptionKey' => 'access_token_subscription_key',
       'ecommerceSubscriptionKey' => 'ecommerce_subscription_key',
+      'callbackPrefix' => 'callback_prefix',
+      'fallBack' => 'fallback'
     ]);
 
     $this->assertInstanceOf(
@@ -124,32 +148,42 @@ final class ConfigTest extends TestCase
 
     $this->assertEquals(
       'client_id',
-      $config->getClientId()
+      $config->clientId
     );
 
     $this->assertEquals(
       'client_secret',
-      $config->getClientSecret()
+      $config->clientSecret
     );
 
     $this->assertEquals(
       trim('https://test.domain.tld/', '/'),
-      $config->getEndpoint()
+      $config->endpoint
     );
 
     $this->assertEquals(
       'merchant_serial_number',
-      $config->getMerchantSerialNumber()
+      $config->merchantSerialNumber
     );
 
     $this->assertEquals(
       'access_token_subscription_key',
-      $config->getAccessTokenSubscriptionKey()
+      $config->accessTokenSubscriptionKey
     );
 
     $this->assertEquals(
       'ecommerce_subscription_key',
-      $config->getEcommerceSubscriptionKey()
+      $config->ecommerceSubscriptionKey
+    );
+
+    $this->assertEquals(
+      'callback_prefix',
+      $config->callbackPrefix
+    );
+
+    $this->assertEquals(
+      'fallback',
+      $config->fallBack
     );
   }
 
@@ -191,6 +225,36 @@ final class ConfigTest extends TestCase
     $this->assertEquals(
       'ecommerce_subscription_key',
       $config->ecommerceSubscriptionKey
+    );
+
+    $config->callbackPrefix = 'callback_prefix';
+    $this->assertEquals(
+      'callback_prefix',
+      $config->callbackPrefix
+    );
+
+    $config->fallBack = 'fallback';
+    $this->assertEquals(
+      'fallback',
+      $config->fallBack
+    );
+  }
+
+  public function testCanBecomeImmuteable(): void {
+    $config = Config::create();
+    $config->clientId = '1234';
+
+    $this->assertEquals(
+      '1234',
+      $config->clientId
+    );
+
+    $config->immuteable(true);
+
+    $config->clientId = '5678';
+    $this->assertEquals(
+      '1234',
+      $config->clientId
     );
   }
 }
