@@ -3,11 +3,27 @@
   "description": "Vipps PHP Library",
   "type": "library",
   "license": "MIT",
+  "keywords": [
+    "vipps",
+    "ecommerce"
+  ],
+  "homepage": "https://github.com/apility/vipps-php",
   "authors": [
     {
       "name": "Thomas Alrek",
-      "email": "thomas@apility.no"
+      "email": "thomas@apility.no",
+      "homepage": "https://github.com/thomas-alrek",
+      "role": "Developer"
     }
+  ],
+  "support": {
+    "issues": "https://github.com/apility/vipps-php/issues",
+    "source": "https://github.com/apility/vipps-php",
+    "docs": "http://htmlpreview.github.io/?https://github.com/apility/vipps-php/blob/master/docs/index.html"
+  },
+  "non-feature-branches": [
+    "hotfix-.*",
+    "release-.*"
   ],
   "autoload": {
     "psr-4": {
@@ -15,7 +31,9 @@
     }
   },
   "autoload-dev": {
-    "psr-4": { "Vipps\\Tests\\": "tests/" }
+    "psr-4": {
+      "Vipps\\Tests\\": "tests/"
+    }
   },
   "config": {
     "platform": {
@@ -23,9 +41,13 @@
     }
   },
   "require": {
+    "php": "7.1.0",
     "guzzlehttp/guzzle": "^6.3"
   },
   "require-dev": {
     "phpunit/phpunit": "^6.5"
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
   }
 }
