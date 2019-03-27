@@ -22,8 +22,8 @@ trait AmountMutator
       };
 
       $usingImmuteableTrait = in_array(
-        Immuteable::class,
-        array_keys((new ReflectionClass(static::class))->getTraits())
+          Immuteable::class,
+          array_keys((new ReflectionClass(static::class))->getTraits())
       );
 
       if ($usingImmuteableTrait) {

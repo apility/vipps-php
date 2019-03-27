@@ -13,7 +13,8 @@ abstract class TestCase extends BaseTestCase
 {
   protected $config;
 
-  public function setUp () {
+  public function setUp()
+  {
     putenv('VIPPS_ENDPOINT=https://apitest.vipps.no');
     putenv('VIPPS_CLIENT_ID=12345678-1234-5678-1234-56781234');
     putenv('VIPPS_CLIENT_SECRET=A1bcdEFGHijkL2MNOpQrsTUVW34=');

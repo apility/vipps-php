@@ -11,37 +11,39 @@ use Vipps\Tests\TestCase;
 
 final class PaymentTest extends TestCase
 {
-  public function testCanSpecifyOrderId (): void {
+  public function testCanSpecifyOrderId(): void
+  {
     $payment = Payment::create();
     $payment->transaction->orderId = '1234';
 
     $this->assertEquals(
-      '1234',
-      $payment->transaction->orderId
+        '1234',
+        $payment->transaction->orderId
     );
   }
 
-  public function testCanCreatePayment (): void {
+  public function testCanCreatePayment(): void
+  {
     $payment = Payment::create();
 
     $this->assertInstanceOf(
-      Payment::class,
-      $payment
+        Payment::class,
+        $payment
     );
 
     $this->assertInstanceOf(
-      MerchantInfo::class,
-      $payment->merchantInfo
+        MerchantInfo::class,
+        $payment->merchantInfo
     );
 
     $this->assertInstanceOf(
-      CustomerInfo::class,
-      $payment->customerInfo
+        CustomerInfo::class,
+        $payment->customerInfo
     );
 
     $this->assertInstanceOf(
-      Transaction::class,
-      $payment->transaction
+        Transaction::class,
+        $payment->transaction
     );
   }
 }

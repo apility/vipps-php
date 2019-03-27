@@ -46,8 +46,9 @@ class PaymentDetails extends Model
   public function setTransactionLogHistory(array $transactionLogHistory = []): PaymentDetails
   {
     $this->attributes['transactionLogHistory'] = array_map(function (array $transactionLog) {
-      if ($transactionLog instanceof TransactionLog)
+      if ($transactionLog instanceof TransactionLog) {
         return $transactionLog;
+      }
 
       return TransactionLog::create($transactionLog);
     }, $transactionLogHistory);

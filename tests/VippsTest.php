@@ -10,44 +10,47 @@ use Vipps\Tests\TestCase;
 
 final class VippsTest extends TestCase
 {
-  public function testCanSetAndGetConfig (): void {
+  public function testCanSetAndGetConfig(): void
+  {
     $this->assertInstanceOf(
-      Config::class,
-      Vipps::getConfig()
+        Config::class,
+        Vipps::getConfig()
     );
 
     $this->assertEquals(
-      $this->config,
-      Vipps::getConfig()
+        $this->config,
+        Vipps::getConfig()
     );
   }
 
-  public function testCanGetTimestamp (): void {
+  public function testCanGetTimestamp(): void
+  {
     $timestamp = Vipps::getTimestamp();
 
     $this->assertNotFalse(
-      DateTime::createFromFormat('Y-m-d\TH:i:s\Z' , $timestamp),
-      Vipps::getTimestamp()
+        DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $timestamp),
+        Vipps::getTimestamp()
     );
   }
 
-  public function testCanCreateUniqueId (): void {
+  public function testCanCreateUniqueId(): void
+  {
     $uniqueIds = [];
 
     for ($i = 0; $i < 100; $i++) {
       $id = Vipps::getUniqueID();
 
       $this->assertNotContains(
-        $id,
-        $uniqueIds
+          $id,
+          $uniqueIds
       );
 
       $uniqueIds[] = $id;
     }
 
     $this->assertCount(
-      100,
-      $uniqueIds
+        100,
+        $uniqueIds
     );
   }
 }
