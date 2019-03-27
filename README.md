@@ -8,6 +8,8 @@
 
 **[See full documentation](http://htmlpreview.github.io/?https://github.com/apility/vipps-php/blob/master/docs/index.html)**
 
+**[Official Vipps API documentation](https://github.com/vippsas/vipps-ecom-api)**
+
 ## Basic usage
 
 ```php
