@@ -50,7 +50,9 @@
     "brainmaestro/composer-git-hooks": "^2.6"
   },
   "scripts": {
-    "test": "vendor/bin/phpcs --standard=ruleset.xml --encoding=utf-8 -n --report=diff src tests && vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
+    "test": "vendor/bin/phpcs --standard=ruleset.xml --encoding=utf-8 -n --report=diff src tests && vendor/bin/phpunit --bootstrap vendor/autoload.php tests",
+    "post-install-cmd": "vendor/bin/cghooks add --ignore-lock",
+    "post-update-cmd": "vendor/bin/cghooks update"
   },
   "extra": {
     "hooks": {
