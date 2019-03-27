@@ -19,11 +19,13 @@ trait Setters
     $method = 'set' . $key;
 
     $callback = function () use ($method, $key, $value) {
-      if (method_exists($this, $method))
+      if (method_exists($this, $method)) {
         return $this->{$method}($value);
+      }
 
-      if (property_exists($this, 'attributes') && property_exists($this, 'fields') && in_array($key, $this->fields))
+      if (property_exists($this, 'attributes') && property_exists($this, 'fields') && in_array($key, $this->fields)) {
         return $this->attributes[$key] = $value;
+      }
     };
 
     $usingImmuteableTrait = method_exists($this, 'mutate') && method_exists($this, 'immuteable');
@@ -42,7 +44,8 @@ trait Setters
    * @param mixed $value
    * @return self
    */
-  public function set (string $key, $value): self {
+  public function set(string $key, $value): self
+  {
     $this->__set($key, $value);
     return $this;
   }

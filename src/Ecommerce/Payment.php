@@ -129,7 +129,8 @@ class Payment extends Model
    * @param string $message
    * @return Response
    */
-  public static function refund($orderId, $amount = 0, string $message = null): Response {
+  public static function refund($orderId, $amount = 0, string $message = null): Response
+  {
     return Vipps::getClient(self::VIPPS_ENDPOINT)
       ->post('/' . $orderId . '/refund', [
         'merchantInfo' => MerchantInfo::create(),

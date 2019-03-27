@@ -2,7 +2,8 @@
 
 namespace Vipps\Traits;
 
-trait ArrayLike {
+trait ArrayLike
+{
   /**
    * Sets the value at offset
    *

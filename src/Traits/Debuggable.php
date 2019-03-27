@@ -2,7 +2,8 @@
 
 namespace Vipps\Traits;
 
-trait Debuggable {
+trait Debuggable
+{
   /**
    * Magic method to customize debug info
    *

@@ -17,11 +17,13 @@ trait Immuteable
    */
   public function immuteable(bool $immuteable)
   {
-    if (!property_exists($this, '_immuteable'))
+    if (!property_exists($this, '_immuteable')) {
       $this->_immuteable = false;
+    }
 
-    if (!$this->_immuteable)
+    if (!$this->_immuteable) {
       $this->_immuteable = $immuteable;
+    }
   }
 
   /**

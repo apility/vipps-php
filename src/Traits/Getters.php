@@ -14,10 +14,12 @@ trait Getters
   {
     $method = 'get' . $key;
 
-    if (method_exists($this, $method))
+    if (method_exists($this, $method)) {
       return $this->{$method}();
+    }
 
-    if (property_exists($this, 'attributes') &&  array_key_exists($key, $this->attributes))
+    if (property_exists($this, 'attributes') &&  array_key_exists($key, $this->attributes)) {
       return $this->attributes[$key];
+    }
   }
 }

@@ -8,7 +8,8 @@ use JsonSerializable;
 /**
  * @package Vipps
  */
-abstract class Model implements ArrayAccess, JsonSerializable {
+abstract class Model implements ArrayAccess, JsonSerializable
+{
   use \Vipps\Traits\Getters;
   use \Vipps\Traits\Setters;
   use \Vipps\Traits\Immuteable;
@@ -35,8 +36,9 @@ abstract class Model implements ArrayAccess, JsonSerializable {
   public function __construct(array $attributes = [], $immuteable = true)
   {
     foreach ($attributes as $key => $value) {
-      if (in_array($key, $this->fields))
+      if (in_array($key, $this->fields)) {
         $this->{$key} = $value;
+      }
     }
 
     $this->immuteable($immuteable);

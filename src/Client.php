@@ -88,8 +88,9 @@ class Client
       'X-TimeStamp' => Vipps::getTimestamp(),
     ];
 
-    if ($this->accessToken)
+    if ($this->accessToken) {
       $headers['Authorization'] = 'Bearer ' . $this->accessToken;
+    }
 
     return $headers;
   }
@@ -118,8 +119,9 @@ class Client
       'headers' => array_merge($this->buildHeaders(), $headers)
     ];
 
-    if ($payload)
+    if ($payload) {
       $request['body'] = json_encode($payload, JSON_FORCE_OBJECT|JSON_PRETTY_PRINT);
+    }
 
     return $request;
   }
@@ -138,12 +140,13 @@ class Client
   {
     try {
       // Re-authenicate if token expired
-      if ($this->accessToken)
+      if ($this->accessToken) {
         $this->authenticate();
+      }
 
       $response = $this->client->{$method}(
-        $absoluteURL ? $route : $this->buildURL($route),
-        $this->buildRequest($headers, $payload)
+          $absoluteURL ? $route : $this->buildURL($route),
+          $this->buildRequest($headers, $payload)
       );
 
       return new Response(json_decode($response->getBody(), true), true);
@@ -166,10 +169,10 @@ class Client
   public function get(string $route = '/', array $headers = []): Response
   {
     return $this->request(
-      self::HTTP_METHOD_GET,
-      $route,
-      null,
-      $headers
+        self::HTTP_METHOD_GET,
+        $route,
+        null,
+        $headers
     );
   }
 
@@ -184,10 +187,10 @@ class Client
   public function post(string $route = '/', $payload = null, array $headers = []): Response
   {
     return $this->request(
-      self::HTTP_METHOD_POST,
-      $route,
-      $payload,
-      $headers
+        self::HTTP_METHOD_POST,
+        $route,
+        $payload,
+        $headers
     );
   }
 
@@ -202,10 +205,10 @@ class Client
   public function put(string $route = '/', $payload = null, array $headers = []): Response
   {
     return $this->request(
-      self::HTTP_METHOD_PUT,
-      $route,
-      $payload,
-      $headers
+        self::HTTP_METHOD_PUT,
+        $route,
+        $payload,
+        $headers
     );
   }
 
@@ -219,10 +222,10 @@ class Client
   public function delete(string $route = '/', array $headers = []): Response
   {
     return $this->request(
-      self::HTTP_METHOD_DELETE,
-      $route,
-      null,
-      $headers
+        self::HTTP_METHOD_DELETE,
+        $route,
+        null,
+        $headers
     );
   }
 
@@ -237,10 +240,10 @@ class Client
   public function patch(string $route = '/', $payload = null, array $headers = []): Response
   {
     return $this->request(
-      self::HTTP_METHOD_PATHC,
-      $route,
-      $payload,
-      $headers
+        self::HTTP_METHOD_PATHC,
+        $route,
+        $payload,
+        $headers
     );
   }
 }
