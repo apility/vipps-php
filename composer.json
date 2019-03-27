@@ -50,11 +50,11 @@
     "brainmaestro/composer-git-hooks": "^2.6"
   },
   "scripts": {
-    "test": "vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
+    "test": "vendor/bin/phpcs --standard=ruleset.xml --encoding=utf-8 -n --report=diff src tests && vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
   },
   "extra": {
     "hooks": {
-      "pre-commit": ["vendor/bin/phpcbf --standard=ruleset.xml --encoding=utf-8 -n src/"]
+      "pre-commit": ["vendor/bin/phpcbf --standard=ruleset.xml --encoding=utf-8 -n src tests"]
     }
   }
 }
