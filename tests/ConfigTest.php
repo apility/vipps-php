@@ -13,48 +13,48 @@ final class ConfigTest extends TestCase
     $config = Config::create();
 
     $this->assertInstanceOf(
-      Config::class,
-      $config
+        Config::class,
+        $config
     );
 
     $this->assertEquals(
-      null,
-      $config->clientId
+        null,
+        $config->clientId
     );
 
     $this->assertEquals(
-      null,
-      $config->clientSecret
+        null,
+        $config->clientSecret
     );
 
     $this->assertEquals(
-      'https://api.vipps.no',
-      $config->endpoint
+        'https://api.vipps.no',
+        $config->endpoint
     );
 
     $this->assertEquals(
-      null,
-      $config->merchantSerialNumber
+        null,
+        $config->merchantSerialNumber
     );
 
     $this->assertEquals(
-      null,
-      $config->accessTokenSubscriptionKey
+        null,
+        $config->accessTokenSubscriptionKey
     );
 
     $this->assertEquals(
-      null,
-      $config->ecommerceSubscriptionKey
+        null,
+        $config->ecommerceSubscriptionKey
     );
 
     $this->assertEquals(
-      null,
-      $config->callbackPrefix
+        null,
+        $config->callbackPrefix
     );
 
     $this->assertEquals(
-      null,
-      $config->fallBack
+        null,
+        $config->fallBack
     );
   }
 
@@ -71,48 +71,48 @@ final class ConfigTest extends TestCase
       ->set('fallBack', 'fallback');
 
     $this->assertInstanceOf(
-      Config::class,
-      $config
+        Config::class,
+        $config
     );
 
     $this->assertEquals(
-      'client_id',
-      $config->clientId
+        'client_id',
+        $config->clientId
     );
 
     $this->assertEquals(
-      'client_secret',
-      $config->clientSecret
+        'client_secret',
+        $config->clientSecret
     );
 
     $this->assertEquals(
-      'http://test.domain.tld',
-      $config->endpoint
+        'http://test.domain.tld',
+        $config->endpoint
     );
 
     $this->assertEquals(
-      'merchant_serial_number',
-      $config->merchantSerialNumber
+        'merchant_serial_number',
+        $config->merchantSerialNumber
     );
 
     $this->assertEquals(
-      'access_token_subscription_key',
-      $config->accessTokenSubscriptionKey
+        'access_token_subscription_key',
+        $config->accessTokenSubscriptionKey
     );
 
     $this->assertEquals(
-      'ecommerce_subscription_key',
-      $config->ecommerceSubscriptionKey
+        'ecommerce_subscription_key',
+        $config->ecommerceSubscriptionKey
     );
 
     $this->assertEquals(
-      'callback_prefix',
-      $config->callbackPrefix
+        'callback_prefix',
+        $config->callbackPrefix
     );
 
     $this->assertEquals(
-      'fallback',
-      $config->fallBack
+        'fallback',
+        $config->fallBack
     );
   }
 
@@ -123,8 +123,8 @@ final class ConfigTest extends TestCase
     $config = Config::create()->setEndpoint($url);
 
     $this->assertEquals(
-      trim($url, '/'),
-      $config->getEndpoint()
+        trim($url, '/'),
+        $config->getEndpoint()
     );
   }
 
@@ -142,48 +142,48 @@ final class ConfigTest extends TestCase
     ]);
 
     $this->assertInstanceOf(
-      Config::class,
-      $config
+        Config::class,
+        $config
     );
 
     $this->assertEquals(
-      'client_id',
-      $config->clientId
+        'client_id',
+        $config->clientId
     );
 
     $this->assertEquals(
-      'client_secret',
-      $config->clientSecret
+        'client_secret',
+        $config->clientSecret
     );
 
     $this->assertEquals(
-      trim('https://test.domain.tld/', '/'),
-      $config->endpoint
+        trim('https://test.domain.tld/', '/'),
+        $config->endpoint
     );
 
     $this->assertEquals(
-      'merchant_serial_number',
-      $config->merchantSerialNumber
+        'merchant_serial_number',
+        $config->merchantSerialNumber
     );
 
     $this->assertEquals(
-      'access_token_subscription_key',
-      $config->accessTokenSubscriptionKey
+        'access_token_subscription_key',
+        $config->accessTokenSubscriptionKey
     );
 
     $this->assertEquals(
-      'ecommerce_subscription_key',
-      $config->ecommerceSubscriptionKey
+        'ecommerce_subscription_key',
+        $config->ecommerceSubscriptionKey
     );
 
     $this->assertEquals(
-      'callback_prefix',
-      $config->callbackPrefix
+        'callback_prefix',
+        $config->callbackPrefix
     );
 
     $this->assertEquals(
-      'fallback',
-      $config->fallBack
+        'fallback',
+        $config->fallBack
     );
   }
 
@@ -193,68 +193,69 @@ final class ConfigTest extends TestCase
 
     $config->clientId = 'client_id';
     $this->assertEquals(
-      'client_id',
-      $config->clientId
+        'client_id',
+        $config->clientId
     );
 
     $config->clientSecret = 'client_secret';
     $this->assertEquals(
-      'client_secret',
-      $config->clientSecret
+        'client_secret',
+        $config->clientSecret
     );
 
     $config->endpoint = 'https://test.domain.tld';
     $this->assertEquals(
-      'https://test.domain.tld',
-      $config->endpoint
+        'https://test.domain.tld',
+        $config->endpoint
     );
 
     $config->merchantSerialNumber = 'merchant_serial_number';
     $this->assertEquals(
-      'merchant_serial_number',
-      $config->merchantSerialNumber
+        'merchant_serial_number',
+        $config->merchantSerialNumber
     );
 
     $config->accessTokenSubscriptionKey = 'access_token_subscription_key';
     $this->assertEquals(
-      'access_token_subscription_key',
-      $config->accessTokenSubscriptionKey
+        'access_token_subscription_key',
+        $config->accessTokenSubscriptionKey
     );
 
     $config->ecommerceSubscriptionKey = 'ecommerce_subscription_key';
     $this->assertEquals(
-      'ecommerce_subscription_key',
-      $config->ecommerceSubscriptionKey
+        'ecommerce_subscription_key',
+        $config->ecommerceSubscriptionKey
     );
 
     $config->callbackPrefix = 'callback_prefix';
     $this->assertEquals(
-      'callback_prefix',
-      $config->callbackPrefix
+        'callback_prefix',
+        $config->callbackPrefix
     );
 
     $config->fallBack = 'fallback';
     $this->assertEquals(
-      'fallback',
-      $config->fallBack
+        'fallback',
+        $config->fallBack
     );
   }
 
-  public function testCanBecomeImmuteable(): void {
+  public function testCanBecomeImmuteable(): void
+  {
     $config = Config::create();
     $config->clientId = '1234';
 
     $this->assertEquals(
-      '1234',
-      $config->clientId
+        '1234',
+        $config->clientId
     );
 
     $config->immuteable(true);
 
     $config->clientId = '5678';
     $this->assertEquals(
-      '1234',
-      $config->clientId
+        '1234',
+        $config->clientId
     );
   }
 }
