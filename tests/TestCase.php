@@ -14,7 +14,12 @@ abstract class TestCase extends BaseTestCase
   protected $config;
 
   public function setUp () {
-    Dotenv::create(__DIR__ . '/..')->load();
+    putenv('VIPPS_ENDPOINT=https://apitest.vipps.no');
+    putenv('VIPPS_CLIENT_ID=12345678-1234-5678-1234-56781234');
+    putenv('VIPPS_CLIENT_SECRET=A1bcdEFGHijkL2MNOpQrsTUVW34=');
+    putenv('VIPPS_MERCHANT_SERIAL_NUMBER=10000');
+    putenv('VIPPS_ACCESS_TOKEN_SUBSCRIPTION_KEY=123456789abcdef123456789abcdef12');
+    putenv('VIPPS_ECOMMERCE_SUBSCRIPTION_KEY=123456789abcdef123456789abcdef12');
 
     $this->config = Config::create([
       'endpoint' => getenv('VIPPS_ENDPOINT'),

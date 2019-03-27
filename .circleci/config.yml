@@ -1,0 +1,80 @@
+version: 2.1
+
+jobs:
+    checkout:
+        docker:
+            - image: circleci/php:latest
+        working_directory: ~/repo
+        steps:
+            - restore_cache:
+                  keys:
+                      - v1-vipps-php-src-{{ .Branch }}-{{ .Revision }}
+                      - v1-vipps-php-src-{{ .Branch }}-
+                      - v1-vipps-php-src-
+            - checkout
+            - save_cache:
+                  paths:
+                      - ~/repo/.git
+                  key: v1-vipps-php-src-{{ .Branch }}-{{ .Revision }}
+            - persist_to_workspace:
+                  root: ~/
+                  paths:
+                      - repo
+
+    install_dependencies:
+        docker:
+            - image: circleci/php:latest
+        working_directory: ~/repo
+        steps:
+            - attach_workspace:
+                  at: ~/
+            - restore_cache:
+                  keys:
+                      - v1-vipps-php-composer-{{ checksum "composer.lock" }}
+                      - v1-vipps-php-composer-
+            - run:
+                  name: Composer install
+                  command: composer install --ignore-platform-reqs
+            - save_cache:
+                  paths:
+                      - ~/repo/vendor
+                  key: v1-vipps-php-src-{{ checksum "composer.lock" }}
+            - persist_to_workspace:
+                  root: ~/
+                  paths:
+                      - repo/vendor
+
+    test:
+        docker:
+            - image: circleci/php:latest
+        working_directory: ~/repo
+        steps:
+            - attach_workspace:
+                  at: ~/
+            - run:
+                  name: PHPUnit
+                  command: vendor/bin/phpunit --bootstrap vendor/autoload.php tests
+
+workflows:
+    version: 2
+    testing:
+        jobs:
+            - checkout:
+                  filters:
+                      branches:
+                          only:
+                              - dev
+            - install_dependencies:
+                  requires:
+                      - checkout
+                  filters:
+                      branches:
+                          only:
+                              - dev
+            - test:
+                  requires:
+                      - install_dependencies
+                  filters:
+                      branches:
+                          only:
+                              - dev
