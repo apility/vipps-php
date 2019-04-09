@@ -11,6 +11,7 @@ use Vipps\Model;
  * @property string $transactionText
  * @property string $timeStamp
  * @property string $operation
+ * @property string $requestId
  * @property bool $operationSuccess
  */
 class TransactionLog extends Model
@@ -21,9 +22,11 @@ class TransactionLog extends Model
   protected $fields = [
     'amount',
     'transactionText',
+    'transactionId',
     'timeStamp',
     'operation',
-    'operationSuccess'
+    'requestId',
+    'operationSuccess',
   ];
 
   /** @var array */
@@ -36,6 +39,6 @@ class TransactionLog extends Model
    */
   public function getOperationSuccess(): bool
   {
-    return boolval($this->_operationSuccess);
+    return boolval($this->attributes['operationSuccess']);
   }
 }

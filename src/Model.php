@@ -62,7 +62,9 @@ abstract class Model implements ArrayAccess, JsonSerializable
    */
   public function jsonSerialize(): array
   {
-    $model = array_filter($this->__debugInfo());
+    $model = array_filter($this->__debugInfo(), function ($value) {
+      return !is_null($value);
+    });
 
     foreach ($this->rawValues as $key) {
       $model[$key] = $this->attributes[$key] ?? null;
