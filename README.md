@@ -10,6 +10,12 @@
 
 **[Official Vipps API documentation](https://github.com/vippsas/vipps-ecom-api)**
 
+## Installation
+
+```bash
+composer require apility/vipps
+```
+
 ## Basic usage
 
 ```php
