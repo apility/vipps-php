@@ -11,7 +11,7 @@ use Vipps\Exception\VippsException;
  */
 class Client
 {
-  /** @var \Vipps\Client Holds the API client instance */
+  /** @var Guzzle Holds the API client instance */
   private $client;
 
   /** @var string The Vipps resource */
@@ -120,7 +120,7 @@ class Client
     ];
 
     if ($payload) {
-      $request['body'] = json_encode($payload, JSON_FORCE_OBJECT|JSON_PRETTY_PRINT);
+      $request['body'] = json_encode($payload, JSON_FORCE_OBJECT | JSON_PRETTY_PRINT);
     }
 
     return $request;
