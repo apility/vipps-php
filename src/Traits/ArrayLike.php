@@ -11,7 +11,7 @@ trait ArrayLike
    * @param mixed $value
    * @return void
    */
-  public function offsetSet($key, $value): void
+  public function offsetSet(mixed $key, mixed $value): void
   {
     $this->{$key} = $value;
   }
@@ -22,7 +22,7 @@ trait ArrayLike
    * @param mixed $key
    * @return bool
    */
-  public function offsetExists($key): bool
+  public function offsetExists(mixed $key): bool
   {
     return !is_null($this->{$key});
   }
@@ -33,7 +33,7 @@ trait ArrayLike
    * @param mixed $key
    * @return void
    */
-  public function offsetUnset($key): void
+  public function offsetUnset(mixed $key): void
   {
     $this->{$key} = null;
   }
@@ -44,7 +44,7 @@ trait ArrayLike
    * @param mixed $key
    * @return void
    */
-  public function offsetGet($key)
+  public function offsetGet(mixed $key): mixed
   {
     return $this->{$key};
   }
