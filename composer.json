@@ -41,8 +41,8 @@
     }
   },
   "require": {
-    "php": "^7.4.0",
-    "netflex/http": "^1.0"
+    "php": "^7.4.0|^8.0",
+    "netflex/http": "*"
   },
   "require-dev": {
     "phpunit/phpunit": "^6.5",
